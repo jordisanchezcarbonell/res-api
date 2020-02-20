@@ -8,10 +8,10 @@ app.use(bodyParser.json());
  
 //create database connection
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'mysql',
-  database: 'fightin_game'
+  host: 'ec2-184-72-235-159.compute-1.amazonaws.com',
+  user: 'fwfdfwbbttulcc',
+  password: '84bf09e16958ccbc43740ca45704b8e31032764d19b0d63529c264119792f293',
+  database: 'd1unnphhc5c8a0'
 });
  
 //connect to database
@@ -36,21 +36,6 @@ app.get('/api/:id',(req, res) => {
   
 });
 
-// Retrieve user with id 
-app.get('/user/:id', function (req, res) {
-  
-    let user_id = req.params.id;
-  
-    if (!user_id) {
-        return res.status(400).send({ error: true, message: 'Please provide user_id' });
-    }
-  
-    dbConn.query('SELECT * FROM users where id=?', user_id, function (error, results, fields) {
-        if (error) throw error;
-        return res.send({ error: false, data: results[0], message: 'users list.' });
-    });
-  
-});
  /*
 //show single product
 app.get('/api/products/:id',(req, res) => {
